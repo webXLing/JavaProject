@@ -36,6 +36,7 @@ public class BannerController {
     public String test(@PathVariable(name = "id1") Integer id,@RequestParam String name) throws Exception {
 
         diana.q();
+
         throw new ForbiddenException(10001);
 //        throw new Exception("dwewq");
 
@@ -43,8 +44,8 @@ public class BannerController {
     }
 
     @PostMapping("/test2/{id1}")
-    public String test(@PathVariable(name = "id1") @Range(min = 2,max = 9,message = "错了") Integer id, @RequestParam String name, @RequestBody PersionDTO persion) throws Exception {
-        PersionDTO persionDTO = new PersionDTO();
+    public String test(@PathVariable(name = "id1") @Range(min = 2,max = 9,message = "错了") Integer id, @RequestParam String name, @RequestBody @Validated PersionDTO persion) throws Exception {
+//        PersionDTO persionDTO = new PersionDTO();
         diana.q();
         throw new ForbiddenException(10001);
 //        throw new Exception("dwewq");
