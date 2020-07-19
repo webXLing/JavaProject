@@ -5,7 +5,9 @@ import org.springframework.web.servlet.mvc.method.RequestMappingInfo;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 import java.lang.reflect.Method;
 
-
+/**
+ * 自动 拼接 接口
+ */
 public class AutoPrefixUrlMapping extends RequestMappingHandlerMapping {
 
     @Value("${xl-apiPakeage}")

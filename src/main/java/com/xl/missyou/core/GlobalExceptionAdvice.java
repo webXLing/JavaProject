@@ -3,18 +3,13 @@ package com.xl.missyou.core;
 import com.xl.missyou.core.configuration.ExceptionCodeConfig;
 import com.xl.missyou.exception.http.HttpException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
-import org.springframework.web.bind.annotation.ControllerAdvice;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.ConstraintViolationException;
 import java.util.List;
 
 @ControllerAdvice
@@ -51,7 +46,7 @@ public class GlobalExceptionAdvice {
         return responseEntity;
     }
 
-    // 处理bean 的异常
+    // 处理bean 的异常  参数异常
     @ExceptionHandler(value = MethodArgumentNotValidException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ResponseBody
@@ -67,6 +62,29 @@ public class GlobalExceptionAdvice {
 
         return unifyResponse;
     }
+
+    /**
+     * url 上的参数校验异常
+     * @param requst
+     * @return
+     * 参数错误code 100001
+     */
+    @ExceptionHandler(ConstraintViolationException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ResponseBody
+    public UnifyResponse handleConstraintViolationException(HttpServletRequest request, ConstraintViolationException e){
+        System.out.println("url 上的参数校验异常");
+//        Set<ConstraintViolation<?>> constraintViolations = e.getConstraintViolations(); //集合
+//        for (ConstraintViolation constraintViolation : constraintViolations) {
+//            ConstraintViolation constraintViolation1 = constraintViolation;
+//            constraintViolation1.getMessage() // 错误信息
+//        }
+        String requestURI = request.getRequestURI();
+        String method = request.getMethod();
+        String message = e.getMessage();
+        return new UnifyResponse(10001,message,requestURI + " " + method +"/"+e);
+    }
+
 
     public String getErrMessage(List<ObjectError> allErrors){
         StringBuilder stringBuilder = new StringBuilder();
