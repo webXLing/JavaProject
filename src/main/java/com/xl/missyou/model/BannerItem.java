@@ -18,4 +18,8 @@ public class BannerItem {
     // 名称
     private String name;
     private long bannerId;
+
+    @ManyToOne
+    @JoinColumn(name = "bannerId")
+    private Banner banner;
 }

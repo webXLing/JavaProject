@@ -3,7 +3,9 @@ package com.xl.missyou.api.v1;
 import com.xl.missyou.dto.PersionDTO;
 import com.xl.missyou.exception.http.ForbiddenException;
 import com.xl.missyou.exception.http.NotFoundException;
+import com.xl.missyou.model.Banner;
 import com.xl.missyou.sample.hero.Diana;
+import com.xl.missyou.service.BannerService;
 import org.hibernate.validator.constraints.Range;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -16,6 +18,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.constraints.NotBlank;
 
 //@Controller
 //@ResponseBody
@@ -27,6 +30,16 @@ public class BannerController {
 
     @Autowired
     private Diana diana;
+
+    @Autowired
+    private BannerService bannerService;
+
+    @GetMapping("/name/{name}")
+    @ResponseBody
+    public Banner getByName(@PathVariable @NotBlank String name){
+        Banner banner = bannerService.getByName(name);
+        return banner;
+    }
 
 
     @GetMapping("/test/{id1}")

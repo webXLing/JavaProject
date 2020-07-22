@@ -21,8 +21,11 @@ public class Banner {
     private String img;
     private String title;
 
-    @OneToMany
+    // 默认懒加载 用到才会sql
+    // 急加载 fetch = FetchType.EAGER
+    //mappedBy BannerItem的导航属性的名字 banner
+    @OneToMany(mappedBy = "banner",fetch = FetchType.EAGER)
     // 设置外键
-    @JoinColumn(name = "bannerId")
+//    @JoinColumn(name = "bannerId")
     private List<BannerItem> items;
 }
