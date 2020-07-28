@@ -17,9 +17,9 @@ public class BannerItem {
     private Short type;
     // 名称
     private String name;
-    private long bannerId;
+    private long bannerId;  //双向绑定时 不需要
 
     @ManyToOne
-    @JoinColumn(name = "bannerId")
+    @JoinColumn(insertable = false,updatable = false,name = "bannerId")
     private Banner banner;
 }
