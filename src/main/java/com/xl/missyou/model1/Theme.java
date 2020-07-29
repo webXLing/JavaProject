@@ -1,9 +1,9 @@
-package com.xl.missyou.model;
+package com.xl.missyou.model1;
 
 import javax.persistence.*;
 import java.util.List;
 
-@Entity
+//@Entity
 public class Theme {
     @Id
     private Long id;

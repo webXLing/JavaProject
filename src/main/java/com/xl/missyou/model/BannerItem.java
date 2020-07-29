@@ -1,25 +1,23 @@
 package com.xl.missyou.model;
-//
+
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
+import java.sql.Timestamp;
+import java.util.Date;
+import java.util.Objects;
 
-// orm 生成表
 @Entity
-//修改表名
-public class BannerItem {
+@Getter
+@Setter
+public class BannerItem extends BaseEntity {
     @Id
-    // 自增 主键
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     private String img;
-    // 配合type
     private String keyword;
-    // 类型
-    private Short type;
-    // 名称
+    private short type;
+    private Long bannerId;
     private String name;
-    private long bannerId;  //双向绑定时 不需要
 
-    @ManyToOne
-    @JoinColumn(insertable = false,updatable = false,name = "bannerId")
-    private Banner banner;
 }

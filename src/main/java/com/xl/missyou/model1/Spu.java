@@ -1,11 +1,9 @@
-package com.xl.missyou.model;
+package com.xl.missyou.model1;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import java.util.List;
 
-@Entity
+//@Entity
 public class Spu {
     @Id
     private Long id;
