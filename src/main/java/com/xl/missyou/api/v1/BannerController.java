@@ -2,6 +2,7 @@ package com.xl.missyou.api.v1;
 
 import com.xl.missyou.dto.PersionDTO;
 import com.xl.missyou.exception.http.ForbiddenException;
+import com.xl.missyou.exception.http.NotFoundException;
 import com.xl.missyou.model.Banner;
 import com.xl.missyou.sample.hero.Diana;
 import com.xl.missyou.service.BannerService;
@@ -30,6 +31,10 @@ public class BannerController {
     @ResponseBody
     public Banner getByName(@PathVariable @NotBlank String name){
         Banner banner = bannerService.getByName(name);
+        System.out.println(banner);
+        if (banner == null) {
+            throw new NotFoundException(300005);
+        }
         return banner;
     }
 
