@@ -1,5 +1,7 @@
 package com.xl.missyou.model;
 
+import lombok.Data;
+
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,9 +10,10 @@ import java.sql.Timestamp;
 import java.util.Objects;
 
 @Entity
+@Data
 public class Spu extends BaseEntity {
     @Id
-    private int id;
+    private Long id;
     private String title;
     private String subtitle;
     private int categoryId;
