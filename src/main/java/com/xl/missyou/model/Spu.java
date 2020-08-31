@@ -1,16 +1,17 @@
 package com.xl.missyou.model;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Data
+@Setter
+@Getter
 public class Spu extends BaseEntity {
     @Id
     private Long id;
@@ -29,6 +30,19 @@ public class Spu extends BaseEntity {
     private Boolean isTest;
 //    private Object spuThemeImg;
     private String forThemeImg;
+
+    // 导航关系 不用再数据库里面加字段  默认lazy
+    @OneToMany(fetch=FetchType.LAZY)
+    @JoinColumn(name = "spuId")
+    private List<SpuImg> spuImgList;
+
+    @OneToMany(fetch=FetchType.LAZY)
+    @JoinColumn(name = "spuId")
+    private List<SpuDetailImg> spuDetailImgList;
+
+    @OneToMany(fetch=FetchType.LAZY)
+    @JoinColumn(name = "spuId")
+    private List<Sku> skuList;
 
 
 }

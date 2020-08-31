@@ -8,6 +8,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.constraints.Positive;
+import java.util.List;
 
 @RestController
 @RequestMapping("/spu")
@@ -27,5 +28,10 @@ public class SpuController {
             throw new NotFoundException(300004);
         }
         return byId;
+    }
+
+    @GetMapping("/lastest")
+    public List<Spu> getLatestSpuList(){
+      return  this.spuService.getLatestPagingSpu();
     }
 }
