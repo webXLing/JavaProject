@@ -1,5 +1,5 @@
 package com.xl.missyou.dto;
-
+// 前端传递给后端的对象
 import com.xl.missyou.validators.PasswordEqual;
 import lombok.*;
 import org.hibernate.validator.constraints.Length;
