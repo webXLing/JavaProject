@@ -17,8 +17,8 @@ public class Spu extends BaseEntity {
     private Long id;
     private String title;
     private String subtitle;
-    private int categoryId;
-    private Integer rootCategoryId;
+    private Long categoryId;
+    private Long rootCategoryId;
     private Boolean online;
     private String price;
     private Integer sketchSpecId;

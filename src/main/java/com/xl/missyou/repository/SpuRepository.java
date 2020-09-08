@@ -11,7 +11,7 @@ public interface SpuRepository extends JpaRepository<Spu,Long> {
 
 //    "select * from spu where category_id = cid"
     // 倒叙
-    Page<Spu> findByCategoryIdOOrderByCreateTimeDesc(Long cid, Pageable pageable);
+    Page<Spu> findByCategoryIdOrderByCreateTimeDesc(Long cid, Pageable pageable);
 
     Page<Spu> findByRootCategoryIdOrderByCreateTime(Long cid, Pageable pageable);
 

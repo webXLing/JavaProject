@@ -73,6 +73,8 @@
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
 
+<!--        类映射-->
+<!--        赋值类-->
         <dependency>
             <groupId>com.github.dozermapper</groupId>
             <artifactId>dozer-core</artifactId>
