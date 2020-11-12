@@ -1,5 +1,9 @@
 package com.xl.missyou.model;
 
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,15 +12,18 @@ import java.sql.Timestamp;
 import java.util.Objects;
 
 @Entity
+@Setter
+@Getter
 public class Category extends BaseEntity{
     @Id
     private Long id;
     private String name;
     private String description;
     private Boolean isRoot;
-    private Integer parentId;
+    private Long parentId;
     private String img;
-    private Integer index;
-    private Integer online;
-    private Integer level;
+    private Long index;
+    private Long online;
+    private Long level;
+
 }
