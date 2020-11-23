@@ -44,5 +44,6 @@ public class Spu extends BaseEntity {
     @JoinColumn(name = "spuId")
     private List<Sku> skuList;
 
-
+//    @ManyToMany(mappedBy = "spuList")
+//    private List<Theme> themeList;
 }

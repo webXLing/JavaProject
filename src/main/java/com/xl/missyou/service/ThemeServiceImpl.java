@@ -6,15 +6,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ThemeServiceImpl implements ThemeService{
     @Autowired
     private ThemeRepository themeRepository;
     @Override
-    public List<Theme> getThemesByName(String name1, String name2) {
+    public List<Theme> getThemesByNames(String name1, String name2) {
 //        return themeRepository.getThemesByName(name1,name2);
-        return themeRepository.getThemesByName(name1,name2);
+        return themeRepository.getThemesByNames(name1,name2);
     }
 
     @Override
@@ -27,5 +28,14 @@ public class ThemeServiceImpl implements ThemeService{
         return themeRepository.findAll();
     }
 
+    @Override
+    public Optional<Theme> getByName(String name) {
+        return themeRepository.getByName(name);
+    }
+
+    @Override
+    public List<Theme> findByArr (List<String> names){
+        return  themeRepository.getByArr(names);
+    }
 
 }
